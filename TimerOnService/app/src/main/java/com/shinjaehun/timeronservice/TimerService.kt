@@ -3,6 +3,7 @@ package com.shinjaehun.timeronservice
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
+import android.util.Log
 import java.util.*
 
 class TimerService : Service() {
@@ -27,6 +28,10 @@ class TimerService : Service() {
             time++
             intent.putExtra(TIME_EXTRA, time)
             sendBroadcast(intent)
+
+            Log.d("TimerService", "TIMER_UPDATED " + intent.getDoubleExtra(TimerService.TIMER_UPDATED, 0.0).toString())
+            Log.d("TimerService", "TIME_EXTRA " + intent.getDoubleExtra(TimerService.TIME_EXTRA, 0.0).toString())
+
         }
     }
 

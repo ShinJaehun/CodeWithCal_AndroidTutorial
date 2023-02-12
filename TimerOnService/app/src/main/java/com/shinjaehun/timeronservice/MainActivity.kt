@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.shinjaehun.timeronservice.databinding.ActivityMainBinding
 import kotlin.math.roundToInt
 
@@ -30,6 +31,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         serviceIntent = Intent(applicationContext, TimerService::class.java)
+
+        Log.d("MainActivity", "TIMER_UPDATED " + serviceIntent.getDoubleExtra(TimerService.TIMER_UPDATED, 0.0).toString())
+        Log.d("MainActivity", "TIME_EXTRA " + serviceIntent.getDoubleExtra(TimerService.TIME_EXTRA, 0.0).toString())
+
         registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
 
     }
